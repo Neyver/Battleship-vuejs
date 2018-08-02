@@ -1,6 +1,6 @@
 <template>
    <div class="menu">
-  	<h1>Menu</h1>
+  	<h1>Settings</h1>
       <span class="label label-default">Number Column</span>
       <input type="text" class="imput" value="" id="column">
       <br>	
