@@ -1,16 +1,15 @@
 <template>
-   <div class="menuContent">
+   <div class="menu-Content">
       <hr>
-      <input type="text" class="imput" value="" id="column">
+      <input type="text" value="" id="column">
       <br>
       <button type="button" name="button">JOIN</button>
   </div>
 </template>
 
 <script>
-	import {EventBus} from '@/services/event-bus';
 export default{	
-	name: 'menuContent',
+	name: 'menu-Content',
 }	
 </script>
 

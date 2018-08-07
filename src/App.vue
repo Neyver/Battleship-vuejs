@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import Battleship from './components/Battleship.vue';
-import Menu from './components/Menu.vue';
+  import Battleship from './components/Battleship.vue';
+  import Menu from './components/Menu.vue';
 export default {
   name: 'App',
   components: {

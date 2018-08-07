@@ -1,46 +1,41 @@
 <template>
     <div class="table">
-      <h1>Map</h1>
-      <div id="table-battle"></div>
+      <div id="table-battles">
+        <table id="table-battle">
+          <tr v-for="row in rows">
+            <td v-for="col in cols"></td>
+          </tr>      
+        </table>
+      </div>
     </div>
 </template>
 
 <script>
-import {EventBus} from '@/services/event-bus';
+  import {EventBus} from '@/services/event-bus';
 export default {
   name: 'Battleship',
   methods: {
-    createTable() {
-    let tableBattle = document.getElementById('table-battle');
-        let codigoHTML='<table class = "table-result" border=\'1\'><tbody>';
-        for (let i = 0; i < this.row; i++) {
-          codigoHTML+='<tr>';
-          for (let j = 0; j < this.col; j++) {
-            codigoHTML+='<td>'+'--'+'</td>';
-          }
-          codigoHTML+='</tr>';
-        }
-        codigoHTML+='</tbody></table>';
-        tableBattle.innerHTML = codigoHTML;
-    }
   },
   data() {
     return {
-      col: '',
-      row: ''
+      cols: '',
+      rows: ''
     }
   },
   mounted() {
-    EventBus.$on('send-values', (col,row) => {
-      this.col = col,
-      this.row = row,
-      this.createTable();
+    EventBus.$on('size-change', (data) => {
+      console.log(data.rows);
+      this.cols = data.cols,
+      this.rows = data.rows
     })
   }
 };
 </script>
 
 <style>
+#table-battle {
+  width: 95%;
+}
 .table-result {
   width: 95%;
   height: 30%;
@@ -59,7 +54,7 @@ td, th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
-  height: 40%;
+  height: 18px;
 }
 
 tr:nth-child(even) {

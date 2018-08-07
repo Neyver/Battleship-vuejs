@@ -2,13 +2,13 @@
    <div class="menu">
   	<h1>Settings</h1>
       <span class="label label-default">Number Column</span>
-      <input type="text" class="imput" value="" id="column">
+      <input type="text" v-model.number = "cols" id="column">
       <br>	
       <span class="label label-default">Number Row</span><br>	
-      <input type="text" name="" value="" id="row">
+      <input type="text"  v-model.number = "rows" id="rowss">
       <br>	
 
-      <button type="button" name="button" @click= RecoverData()>Create</button>
+      <button type="button" name="button" v-on:click = "recoverData">Create</button>
       <MenuContent/>
   </div>
 </template>
@@ -21,15 +21,20 @@ export default{
 	components: {
         MenuContent    
   	},
+  	data() {
+  		return {
+  			cols: '',
+  			rows: '' 
+  		}
+  	},
 	methods: {
-		RecoverData() {
-	        var numColumnas=parseInt(document.getElementById('column').value);
-	        var numFilas=parseInt(document.getElementById('row').value);
-	        console.log(numColumnas,numFilas);
-	     	EventBus.$emit('send-values', numColumnas,numFilas);   
+		recoverData() {
+	     		EventBus.$emit('size-change', {
+	     			cols:this.cols, rows:this.rows
+	     		}); 
 		}
 	}
-}	
+};	
 </script>
 
 <style>
