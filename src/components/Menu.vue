@@ -1,4 +1,4 @@
-<template>
+﻿<template>
    <div class="menu">
   	<h1>Settings</h1>
       <span class="label label-default">Number Column</span>
@@ -14,27 +14,29 @@
 </template>
 
 <script>
-	import {EventBus} from '@/services/event-bus';
-	import MenuContent from '@/components/MenuContent.vue';
-export default{	
-	name: 'menu',
-	components: {
-        MenuContent    
-  	},
-  	data() {
-  		return {
-  			cols: '',
-  			rows: '' 
-  		}
-  	},
-	methods: {
-		recoverData() {
-	     		EventBus.$emit('size-change', {
-	     			cols:this.cols, rows:this.rows
-	     		}); 
-		}
-	}
-};	
+  import {EventBus} from '@/services/event-bus';
+  import MenuContent from '@/components/MenuContent.vue';
+  import NewGame from '@/services/NewGame';
+  export default{
+  name: 'menu',
+  components: {
+  MenuContent
+  },
+  data() {
+  return {
+  cols: '',
+  rows: ''
+  }
+  },
+  methods: {
+  recoverData() {
+  EventBus.$emit('size-change', {
+  cols:this.cols, rows:this.rows
+  });
+  NewGame.create({cols, rows})
+  }
+  }
+  };
 </script>
 
 <style>
