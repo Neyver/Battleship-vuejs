@@ -20,22 +20,22 @@
   export default{
   name: 'menu',
   components: {
-  MenuContent
+    MenuContent
   },
-  data() {
-  return {
-  cols: '',
-  rows: ''
-  }
-  },
+    data() {
+      return {
+        cols: '',
+        rows: ''
+      }
+    },
   methods: {
   recoverData() {
-  EventBus.$emit('size-change', {
-  cols:this.cols, rows:this.rows
-  });
-  NewGame.create({cols, rows})
-  }
-  }
+    EventBus.$emit('size-change', {
+    cols:this.cols, rows:this.rows
+    });
+      NewGame.create({cols, rows})
+      }
+    }
   };
 </script>
 
